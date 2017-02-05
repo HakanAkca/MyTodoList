@@ -25,6 +25,41 @@ button:hover {
     background-color:rgba(0,0,0,0);
   }
 }
+#delete-button {
+  position:absolute;
+  right:0px;
+  top:0px;
+
+  width:auto;
+  height:100%;
+
+  line-height:40px;
+  padding-left:5px;
+  padding-right:5px;
+
+  background-color:white;
+  border-radius:2px;
+  font-size:8px;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+  user-select:none;
+
+  opacity:0.6;
+  transition:opacity 0.3s;
+
+  &:hover {
+    opacity:1;
+  }
+}
+@keyframes animate-del-button {
+  0% {
+    transform:scale(0);
+  }
+  100% {
+    transform:scale(1);
+  }
+}
 @keyframes animate-add {
   0% {
     transform:scale(0);
@@ -32,6 +67,9 @@ button:hover {
   100% {
     transform:scale(1);
   }
+}
+.animate-del-button {
+  animation:animate-del-button 0.3s;
 }
 .animate-add {
   animation:animate-add 0.5s;

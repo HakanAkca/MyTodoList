@@ -44,6 +44,7 @@ main {
     margin-bottom: 10px; }
 
 .task {
+  position: relative;
   width: auto;
   height: auto;
   padding: 10px;
@@ -53,6 +54,19 @@ main {
   background-color: rgba(255, 255, 255, 0.17);
   color: white;
   cursor: default; }
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px; }
+
+::-webkit-scrollbar-track {
+  background-color: white;
+  -moz-box-shadow: inset 1px 1px 5px 0px #656565;
+  -webkit-box-shadow: inset 1px 1px 5px 0px #656565;
+  box-shadow: inset 1px 1px 5px 0px #656565; }
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.8); }
 
 /* RESPONSIVE */
 @media screen and (min-width: 641px) and (max-width: 960px) {
@@ -168,11 +182,40 @@ button:hover {
   transition: 0.3s;
   background-color: transparent; }
 
+#delete-button {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: auto;
+  height: 100%;
+  line-height: 40px;
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: white;
+  border-radius: 2px;
+  font-size: 8px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+  opacity: 0.6;
+  transition: opacity 0.3s; }
+  #delete-button:hover {
+    opacity: 1; }
+
+@keyframes animate-del-button {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
 @keyframes animate-add {
   0% {
     transform: scale(0); }
   100% {
     transform: scale(1); } }
+.animate-del-button {
+  animation: animate-del-button 0.3s; }
+
 .animate-add {
   animation: animate-add 0.5s; }
 
