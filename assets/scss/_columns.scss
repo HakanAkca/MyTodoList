@@ -78,20 +78,25 @@ img {
         justify-content: flex-start;
         font-size: 1.3rem;
     }
+
     .column {
         width: 270px;
     }
+
     .card {
         width: auto;
         height: 50px;
         background: #E2E4E6;
     }
+
     .add_card {
         font-size: 1.1rem;
     }
+
     .delete_column {
         font-size: 1.1rem;
     }
+
     .modal {
         display: none;
         position: fixed;
