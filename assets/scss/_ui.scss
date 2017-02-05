@@ -1,0 +1,38 @@
+button {
+  -webkit-appearance:none;
+
+  box-sizing:border-box;
+  padding:10px;
+
+  background-color: rgba(0, 121, 191, 1);
+  border-radius:3px;
+  border:1px solid white;
+  color:white;
+
+  opacity:0.5;
+  transition:opacity 0.3s;
+}
+button:hover {
+  cursor:pointer;
+  background-color: rgba(0, 121, 191, 0.8);
+  opacity:1;
+}
+.project {
+  .add-task {
+    width:100%;
+    margin-bottom:10px;
+    transition:0.3s;
+    background-color:rgba(0,0,0,0);
+  }
+}
+@keyframes animate-add {
+  0% {
+    transform:scale(0);
+  }
+  100% {
+    transform:scale(1);
+  }
+}
+.animate-add {
+  animation:animate-add 0.5s;
+}

@@ -5,151 +5,31 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script src="assets/javascript/script.js"></script>
     <meta name="viewport" content="width=device-width, user-scalable=no">
-    <title>MyTodoList</title>
+    <title>Project Organizer</title>
 </head>
 <body>
-<header>
-    <nav>
-        <img src="assets/image/Trello.png" id="left" height="60px" width="60px">
-            <ul>
-                <li><a href="#" class="current">Home</a></li>
-                <li><a href="#">Work</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-    </nav>
-</header>
-<main>
-    <button id="add-list">Ajouter une liste...</button>
-    <div id="column_container">
-        <section class="column">
-            <h1 class="title_column">Titre item</h1><!-- taille texte max 15 caractères-->
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL LSOQDFNQSON DFSDNFLSDNFL LSOQDFNQSON DFSDNFLSDNFL LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS
-                <div id="myModal" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <span>Afficher le Nom de la table</span><br><br>
-                        <input type="checkbox">Début
-                        <input type="checkbox">Milieu
-                        <input type="checkbox">Fin
-                        <input type="checkbox">Annuler<br><br>
-                    <button>Valider</button>
-                </div>
-            </div>
-                <br>
-                <input type="checkbox" checked></div>
-            <button class="add_card">Ajouter une liste...</button><!-- Ajouter a la fin de chaque colonne-->
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-        <section class="column">
-            <h1 class="title_column">Titre item</h1>
-            <div class="card">LSOQDFNQSON DFSDNFLSDNFL</div>
-            <div class="card">LSOQDFNQSONDFS DNFLS</div>
-            <button class="add_card">Ajouter une liste...</button>
-        </section>
-    </div>
-</main>
+    <header>
+        <button id="add-project">Add a project</button>
+    </header>
+
+    <main>
+        <div id="projects">
+            <section class="project">
+                <h1>Dior website</h1><!-- taille texte max 15 caractères-->
+
+                <button class="add-task">Add a new task</button>
+                <div class="task">Finish "About" page</div>
+                <div class="task">Add images to the gallery</div>
+            </section>
+            <section class="project">
+                <h1>Lacoste website</h1><!-- taille texte max 15 caractères-->
+
+                <button class="add-task">Add a new task</button><!-- Ajouter a la fin de chaque colonne-->
+                <div class="task">Finish the wireframe</div>
+                <div class="task">Start the logo</div>
+                <div class="task">Do something</div>
+            </section>
+        </div>
+    </main>
 </body>
 </html>
