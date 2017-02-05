@@ -16,6 +16,17 @@ window.onload = function(){
   };
 
   // Add task buttons on each project
+
+  function setClickTaskTriggers(){
+    for(var i = 0; i < tasks.length; i++){
+      tasks[i].onclick = function(){
+        var span = this.getElementsByTagName("span")[0];
+        span.setAttribute("contentEditable", true);
+      }
+    }
+  }
+  setClickTaskTriggers();
+
   function setAddtaskTriggers(){
     add_task_buttons = document.querySelectorAll(".add-task");
     for(var i = 0; i < add_task_buttons.length; i++){
@@ -27,17 +38,20 @@ window.onload = function(){
   setAddtaskTriggers();
 
   // On hover task
-  for(var i = 0; i < tasks.length; i++){
-    tasks[i].onmouseover = function(){
-      this.appendChild(delete_button);
-      delete_button.className = "delete-button animate-del-button";
-    }
-    tasks[i].onmouseout = function(){
-      if(getCurrentHoverId() !== "delete-button" && getCurrentHoverId() !== this.id){
-        this.removeChild(delete_button);
+  function setHoverTaskTriggers(){
+    for(var i = 0; i < tasks.length; i++){
+      tasks[i].onmouseover = function(){
+        this.appendChild(delete_button);
+        delete_button.className = "delete-button animate-del-button";
+      }
+      tasks[i].onmouseout = function(){
+        if(getCurrentHoverId() !== "delete-button" && getCurrentHoverId() !== this.id){
+          this.removeChild(delete_button);
+        }
       }
     }
   }
+  setHoverTaskTriggers();
 
   delete_button.onclick = function(){
     this.parentElement.parentElement.removeChild(this.parentElement);
@@ -71,5 +85,6 @@ window.onload = function(){
 
     e.parentElement.appendChild(created_task);
     tasks = document.querySelectorAll(".task");
+    setHoverTaskTriggers();
   }
 };
