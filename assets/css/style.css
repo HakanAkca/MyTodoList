@@ -6,7 +6,8 @@ body {
   margin: 0;
   font-size: 1.05em;
   font-family: 'Roboto';
-  background-color: #0079bf; }
+  background-color: #0079bf;
+  user-select: none; }
 
 header {
   width: 100%;
@@ -29,6 +30,7 @@ main {
   font-size: 1.3rem; }
 
 .project {
+  position: relative;
   background: rgba(254, 254, 254, 0.2);
   padding: 10px;
   text-align: center;
@@ -38,14 +40,15 @@ main {
   margin-bottom: 10px; }
   .project h1 {
     margin: 0;
-    padding: 0;
+    padding: 3px;
     color: white;
     font-size: 1.3rem;
     margin-bottom: 10px;
-    word-wrap: break-word; }
+    word-wrap: break-word;
+    cursor: default; }
     .project h1:focus {
-      background-color: rgba(255, 255, 255, 0.3);
-      padding: 4px; }
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white; }
 
 .task {
   position: relative;
@@ -58,9 +61,11 @@ main {
   background-color: rgba(255, 255, 255, 0.17);
   color: white;
   cursor: default; }
-  .task span:focus {
-    background-color: rgba(255, 255, 255, 0.3);
+  .task span {
     padding: 4px; }
+    .task span:focus {
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white; }
 
 /* Scrollbar */
 ::-webkit-scrollbar {
@@ -189,16 +194,20 @@ button:hover {
   transition: 0.3s;
   background-color: transparent; }
 
-#delete-button {
+.delete-button {
   position: absolute;
-  right: 0px;
-  top: 0px;
-  width: auto;
-  height: 100%;
+  right: 5px;
+  top: 12px;
+  width: 16px;
+  height: 16px;
   line-height: 40px;
   padding-left: 5px;
   padding-right: 5px;
   background-color: white;
+  background-image: url("../../assets/image/delete.svg");
+  background-position: center;
+  background-size: 35%;
+  background-repeat: no-repeat;
   border-radius: 2px;
   font-size: 8px;
   color: black;
@@ -207,22 +216,14 @@ button:hover {
   user-select: none;
   opacity: 0.6;
   transition: opacity 0.3s; }
-  #delete-button:hover {
+  .delete-button:hover {
     opacity: 1; }
 
-@keyframes animate-del-button {
-  0% {
-    transform: scale(0); }
-  100% {
-    transform: scale(1); } }
 @keyframes animate-add {
   0% {
     transform: scale(0); }
   100% {
     transform: scale(1); } }
-.animate-del-button {
-  animation: animate-del-button 0.3s; }
-
 .animate-add {
   animation: animate-add 0.5s; }
 

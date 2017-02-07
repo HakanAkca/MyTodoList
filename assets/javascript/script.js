@@ -6,8 +6,12 @@ window.onload = function(){
   var projects = [];
 
   var delete_button = document.createElement("div");
+  delete_button.className = "delete_button";
   delete_button.id = "delete-button";
-  delete_button.innerHTML = "Delete";
+
+  var delete_button_project = document.createElement("div");
+  delete_button_project.className = "delete_button";
+  delete_button_project.id = "delete-button-project";
 
   var projects_area = document.querySelector("#projects");
   var add_project = document.querySelector("#add-project");
@@ -106,6 +110,18 @@ window.onload = function(){
 
     localStorage.setItem('projects', JSON.stringify(projects));
   }
+  delete_button_project.onclick = function(){
+    this.parentElement.parentElement.removeChild(this.parentElement);
+
+    var projects = [];
+    projects = JSON.parse(localStorage.getItem('projects'));
+    var projectId_temp = this.parentElement.id.split("_");
+    var projectId = projectId_temp[1];
+
+    projects.splice(projectId,1);
+
+    localStorage.setItem('projects', JSON.stringify(projects));
+  }
 
   /* === FUNCTIONS === */
 
@@ -140,6 +156,9 @@ window.onload = function(){
     projects = JSON.parse(localStorage.getItem('projects'));
     projects.push(projectData);
     localStorage.setItem('projects', JSON.stringify(projects));
+
+    setClickProjectTriggers();
+    setHoverProjectTriggers();
   }
 
   // Add new task
@@ -154,13 +173,16 @@ window.onload = function(){
     created_task.className = "task animate-add";
     created_task.innerHTML = "<span>New task</span>";
 
+    var projectId_temp = e.parentElement.id.split("_");
+    var projectId = projectId_temp[1];
+    var nOfTasks = e.parentElement.getElementsByClassName("task").length;
+    created_task.id = "task_"+projectId+"_"+nOfTasks;
+
     e.parentElement.appendChild(created_task);
     setClickTaskTriggers();
     // Adding to local storage
     var projects = [];
     projects = JSON.parse(localStorage.getItem('projects'));
-    var projectId_temp = e.parentElement.id.split("_");
-    var projectId = projectId_temp[1];
     projects[projectId].tasks.push(created_task.innerHTML);
     localStorage.setItem('projects', JSON.stringify(projects));
     //
@@ -171,11 +193,25 @@ window.onload = function(){
     for(var i = 0; i < tasks.length; i++){
       tasks[i].onmouseover = function(){
         this.appendChild(delete_button);
-        delete_button.className = "delete-button animate-del-button";
+        delete_button.className = "delete-button";
       }
       tasks[i].onmouseout = function(){
         if(getCurrentHoverId() !== "delete-button" && getCurrentHoverId() !== this.id){
           this.removeChild(delete_button);
+        }
+      }
+    }
+  }
+  function setHoverProjectTriggers(){
+    project_items = document.querySelectorAll(".project");
+    for(var i = 0; i < project_items.length; i++){
+      project_items[i].onmouseover = function(){
+        this.appendChild(delete_button_project);
+        delete_button_project.className = "delete-button";
+      }
+      project_items[i].onmouseout = function(){
+        if(getCurrentHoverId() !== "delete-button-project" && getCurrentHoverId() !== this.id){
+          this.removeChild(delete_button_project);
         }
       }
     }
@@ -213,4 +249,5 @@ window.onload = function(){
   setAddtaskTriggers();
   setClickTaskTriggers();
   setClickProjectTriggers();
+  setHoverProjectTriggers();
 };
