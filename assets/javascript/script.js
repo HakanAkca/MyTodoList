@@ -13,6 +13,7 @@ window.onload = function(){
   var add_project = document.querySelector("#add-project");
   var add_task_buttons = document.querySelectorAll(".add-task");
   var tasks = document.querySelectorAll(".task");
+  var project_names = document.querySelectorAll(".project h1");
 
   /* === TRIGGERS === */
 
@@ -28,11 +29,54 @@ window.onload = function(){
   };
 
   // On click task
+  function setClickProjectTriggers(){
+    project_names = document.querySelectorAll(".project h1");
+    for(var i = 0; i < project_names.length; i++){
+      project_names[i].onclick = function(){
+        this.setAttribute("contentEditable", true);
+
+        this.addEventListener("keypress", function(event) {
+          if (event.keyCode == 13) {
+            event.preventDefault();
+
+            if(this.innerHTML !== ""){
+              var projects = [];
+              projects = JSON.parse(localStorage.getItem('projects'));
+              var projectId_temp = this.parentElement.id.split("_");
+              var projectId = projectId_temp[1];
+
+              projects[projectId].name = this.innerHTML;
+
+              localStorage.setItem('projects', JSON.stringify(projects));
+              this.setAttribute("contentEditable", false);
+            }
+          }
+        });
+      }
+    }
+  }
   function setClickTaskTriggers(){
+    tasks = document.querySelectorAll(".task");
     for(var i = 0; i < tasks.length; i++){
       tasks[i].onclick = function(){
         var span = this.getElementsByTagName("span")[0];
         span.setAttribute("contentEditable", true);
+
+        span.addEventListener("keypress", function(event) {
+          if (event.keyCode == 13) {
+            event.preventDefault();
+            var projects = [];
+            projects = JSON.parse(localStorage.getItem('projects'));
+            var taskRawId = this.parentElement.id.split("_");
+            var projectId = taskRawId[1];
+            var taskId = taskRawId[2];
+
+            projects[projectId].tasks[taskId] = this.innerHTML;
+
+            localStorage.setItem('projects', JSON.stringify(projects));
+            span.setAttribute("contentEditable", false);
+          }
+        });
       }
     }
   }
@@ -108,10 +152,10 @@ window.onload = function(){
   function addTask(e){
     var created_task = document.createElement("div");
     created_task.className = "task animate-add";
-    created_task.innerHTML = "New task";
+    created_task.innerHTML = "<span>New task</span>";
 
     e.parentElement.appendChild(created_task);
-    tasks = document.querySelectorAll(".task");
+    setClickTaskTriggers();
     // Adding to local storage
     var projects = [];
     projects = JSON.parse(localStorage.getItem('projects'));
@@ -122,7 +166,6 @@ window.onload = function(){
     //
     setHoverTaskTriggers();
   }
-
   function setHoverTaskTriggers(){
     tasks = document.querySelectorAll(".task");
     for(var i = 0; i < tasks.length; i++){
@@ -156,7 +199,7 @@ window.onload = function(){
       for(var j = 0; j < projects[i].tasks.length; j++){
         var created_task = document.createElement("div");
         created_task.className = "task";
-        created_task.innerHTML = projects[i].tasks[j];
+        created_task.innerHTML = "<span>"+projects[i].tasks[j]+"</span>";
         created_task.id = "task_"+created_project.id.split("_")[1]+"_"+j;
         created_project.appendChild(created_task);
       }
@@ -168,4 +211,6 @@ window.onload = function(){
   setHoverTaskTriggers();
   hydrateProjects();
   setAddtaskTriggers();
+  setClickTaskTriggers();
+  setClickProjectTriggers();
 };
