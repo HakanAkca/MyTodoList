@@ -1,10 +1,12 @@
 window.onload = function(){
 
+  // Init local storage if empty.
   if(localStorage.getItem('projects') === null){
     localStorage.setItem('projects',"[]");
   }
   var projects = [];
 
+  // Create delete buttons
   var delete_button = document.createElement("div");
   delete_button.className = "delete_button";
   delete_button.id = "delete-button";
@@ -13,26 +15,23 @@ window.onload = function(){
   delete_button_project.className = "delete_button";
   delete_button_project.id = "delete-button-project";
 
+  // Selector variables
   var projects_area = document.querySelector("#projects");
-  var add_project = document.querySelector("#add-project");
+  var add_project_button = document.querySelector("#add-project");
   var add_task_buttons = document.querySelectorAll(".add-task");
   var tasks = document.querySelectorAll(".task");
   var project_names = document.querySelectorAll(".project h1");
+  var clear_local_button = document.querySelector("#clear-local");
 
   /* === TRIGGERS === */
-
-  document.querySelector("#clear-local").onclick = function(){
+  clear_local_button.onclick = function(){
     localStorage.removeItem("projects");
   };
-  document.querySelector("#show-local").onclick = function(){
-    console.log(localStorage.projects);
-  };
-  // Add project button
-  add_project.onclick = function(){
+
+  add_project_button.onclick = function(){
     addProject();
   };
 
-  // On click task
   function setClickProjectTriggers(){
     project_names = document.querySelectorAll(".project h1");
     for(var i = 0; i < project_names.length; i++){
@@ -124,7 +123,6 @@ window.onload = function(){
   }
 
   /* === FUNCTIONS === */
-
   function getCurrentHoverId(){
     var hovered = document.querySelectorAll(":hover");
     return hovered[hovered.length-1].id;
@@ -159,15 +157,15 @@ window.onload = function(){
 
     setClickProjectTriggers();
     setHoverProjectTriggers();
+    setDroppableProjects();
   }
 
-  // Add new task
   function nbProjects(){
     var projects = [];
     projects = JSON.parse(localStorage.getItem('projects'));
     return projects.length;
   }
-  nbProjects();
+
   function addTask(e){
     var created_task = document.createElement("div");
     created_task.className = "task animate-add";
@@ -180,6 +178,7 @@ window.onload = function(){
 
     e.parentElement.appendChild(created_task);
     setClickTaskTriggers();
+
     // Adding to local storage
     var projects = [];
     projects = JSON.parse(localStorage.getItem('projects'));
@@ -213,6 +212,35 @@ window.onload = function(){
         if(getCurrentHoverId() !== "delete-button-project" && getCurrentHoverId() !== this.id){
           this.removeChild(delete_button_project);
         }
+      }
+    }
+  }
+  function setDraggableTasks(){
+    tasks = document.querySelectorAll(".task");
+    for(var i = 0; i < tasks.length; i++){
+      tasks[i].draggable = true;
+
+      tasks[i].ondragstart = function(e){
+        e.dataTransfer.effectAllowed = 'move';
+        e.dataTransfer.setData("Text", e.target.id);
+      }
+    }
+  }
+  function setDroppableProjects(){
+    projects_list = document.querySelectorAll(".project");
+    for(var i = 0; i < projects_list.length; i++){
+      projects_list[i].ondragenter = function(e){
+        this.classList.add("drag_enter");
+        var data = e.dataTransfer.getData("Text");
+        console.log(data);
+      }
+      projects_list[i].ondragleave = function(){
+        this.classList.remove("drag_enter");
+      }
+
+      projects_list[i].ondrop = function(){
+        ev.preventDefault();
+        console.log("Dropped");
       }
     }
   }
@@ -250,4 +278,6 @@ window.onload = function(){
   setClickTaskTriggers();
   setClickProjectTriggers();
   setHoverProjectTriggers();
+  setDraggableTasks();
+  setDroppableProjects();
 };

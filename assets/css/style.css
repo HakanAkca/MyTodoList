@@ -219,6 +219,9 @@ button:hover {
   .delete-button:hover {
     opacity: 1; }
 
+.drag_enter {
+  outline: 2px solid rgba(0, 0, 0, 0.4); }
+
 @keyframes animate-add {
   0% {
     transform: scale(0); }
