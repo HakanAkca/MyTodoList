@@ -24,9 +24,6 @@ window.onload = function(){
   var clear_local_button = document.querySelector("#clear-local");
 
   /* === TRIGGERS === */
-  clear_local_button.onclick = function(){
-    localStorage.removeItem("projects");
-  };
 
   add_project_button.onclick = function(){
     addProject();
@@ -186,6 +183,7 @@ window.onload = function(){
     localStorage.setItem('projects', JSON.stringify(projects));
     //
     setHoverTaskTriggers();
+    setDraggableTasks();
   }
   function setHoverTaskTriggers(){
     tasks = document.querySelectorAll(".task");

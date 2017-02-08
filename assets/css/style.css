@@ -24,6 +24,13 @@ main {
   padding-left: 19px;
   padding-right: 19px; }
 
+#logo {
+  position: absolute;
+  width: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 10px; }
+
 #projects {
   display: flex;
   flex-wrap: wrap;
